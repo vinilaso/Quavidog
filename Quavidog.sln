@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quavidog", "Quavidog\Quavid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{5ADB7593-FE06-40E6-BE21-6044E7FEF5AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "Commons\Commons.csproj", "{6EE62BD7-3D47-403D-9138-3A6B50962CC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5ADB7593-FE06-40E6-BE21-6044E7FEF5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ADB7593-FE06-40E6-BE21-6044E7FEF5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ADB7593-FE06-40E6-BE21-6044E7FEF5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE62BD7-3D47-403D-9138-3A6B50962CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE62BD7-3D47-403D-9138-3A6B50962CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE62BD7-3D47-403D-9138-3A6B50962CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE62BD7-3D47-403D-9138-3A6B50962CC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
