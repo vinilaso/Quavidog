@@ -1,4 +1,5 @@
 ﻿using Commons.Interfaces;
+using Generics.Repository.DAO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,29 +29,60 @@ namespace Generics.Entities
 
         #region Methods
 
-        public void Add()
+        public static bool Add(IAddress address)
         {
-
+            try 
+            {
+                AddressDAO.Add(address);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public void ReadOne()
+        public static IAddress ReadOne(int id)
         {
-
+            try
+            {
+                return AddressDAO.ReadOne(id);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public void ReadAll()
+        public static List<IAddress> ReadAll()
         {
-
+            return AddressDAO.ReadAll();
         }
 
-        public void Update()
+        public static bool Update(IAddress newAddress)
         {
-
+            try
+            {
+                AddressDAO.Update(newAddress);
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
         }
 
-        public void Delete()
+        public static bool Delete(int id)
         {
-
+            try
+            {
+                AddressDAO.Delete(id);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         #endregion

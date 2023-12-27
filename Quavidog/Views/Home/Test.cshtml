@@ -1,0 +1,24 @@
+﻿@model AddressModel
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>CEP</th>
+            <th>STREET</th>
+            <th>NUMBER</th>
+            <th>NEIGHBORHOOD</th>
+            <th>CITY</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.Cep</td>
+            <td>@Model.Street</td>
+            <td>@Model.Number</td>
+            <td>@Model.Neighborhood</td>
+            <td>@Model.City</td>
+        </tr>
+    </tbody>
+</table>

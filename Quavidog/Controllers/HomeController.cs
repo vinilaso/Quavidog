@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Generics.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Quavidog.Models;
 using System.Diagnostics;
 
@@ -21,6 +22,12 @@ namespace Quavidog.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Test() 
+        {
+            var model = new AddressModel(Address.ReadOne(1));
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
