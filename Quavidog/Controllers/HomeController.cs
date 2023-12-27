@@ -26,8 +26,7 @@ namespace Quavidog.Controllers
 
         public IActionResult Test() 
         {
-            var model = new AddressModel(Address.ReadOne(1));
-            return View(model);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

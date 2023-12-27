@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Commons.Enums;
+using Commons.Interfaces;
+using Generics.Repository.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Generics.Entities
 {
-    public class User
+    public class User : IUser
     {
         #region Attributes
 
@@ -16,7 +19,8 @@ namespace Generics.Entities
         public string Password { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
-        public Address Address { get; set; } = new Address();
+        public IAddress Address { get; set; }
+        public AccessType AccessType { get; set; }
         public byte[]? Media { get; set; }
         public string? MediaName { get; set; }
 
@@ -30,29 +34,68 @@ namespace Generics.Entities
 
         #region Methods
 
-        public void Add()
+        public static bool Add(IUser user)
         {
+            try
+            {
+                UserDAO.Add(user);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static IUser ReadOne(string cpf)
+        {
+            try
+            {
+                return UserDAO.ReadOne(cpf);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<IUser> ReadAll()
+        {
+            try
+            {
+                return UserDAO.ReadAll();
+            }
+            catch
+            {
+                return new List<IUser>();
+            }
 
         }
 
-        public void ReadOne()
+        public static bool Update(IUser newUser)
         {
-
+            try
+            {
+                UserDAO.Update(newUser);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public void ReadAll()
+        public static bool Delete(string cpf)
         {
-
-        }
-
-        public void Update()
-        {
-
-        }
-
-        public void Delete()
-        {
-
+            try
+            {
+                UserDAO.Delete(cpf);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion
