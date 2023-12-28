@@ -43,7 +43,7 @@ namespace Generics.Repository.DAO
             }
         }
 
-        public static IUser ReadOne(string cpf)
+        public static IUser ReadOneByCpf(string cpf)
         {
             var result = new User();
             using(var conn = new SqlConnection(DBConnection.Connect()))
@@ -56,6 +56,41 @@ namespace Generics.Repository.DAO
                 cmd.Parameters.AddWithValue("@CPF", cpf);
 
                 using(var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = new User()
+                        {
+                            Id = (int)reader["ID"],
+                            Address = AddressDAO.ReadOne((int)reader["ADDRESS_ID"]),
+                            Name = (string)reader["NAME"],
+                            Phone = (string)reader["PHONE"],
+                            Email = (string)reader["EMAIL"],
+                            Cpf = (string)reader["CPF"],
+                            Password = (string)reader["PASSWORD"],
+                            AccessType = (AccessType)reader["ACCESS_TYPE"],
+                            Media = (reader["MEDIA"] != DBNull.Value) ? (byte[])reader["MEDIA"] : null,
+                            MediaName = (reader["MEDIA_NAME"] != DBNull.Value) ? (string)reader["MEDIA_NAME"] : null
+                        };
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static IUser ReadOneById(int id)
+        {
+            var result = new User();
+            using(var conn = new SqlConnection(DBConnection.Connect()))
+            {
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT ID, ADDRESS_ID, NAME, PHONE, EMAIL, CPF, MEDIA, MEDIA_NAME, PASSWORD, ACCESS_TYPE " +
+                    "FROM USERS WHERE ID = @ID;";
+
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                using (var reader = cmd.ExecuteReader())
                 {
                     if (reader.Read())
                     {

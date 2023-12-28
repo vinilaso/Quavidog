@@ -51,7 +51,7 @@ namespace Generics.Entities
         {
             try
             {
-                return UserDAO.ReadOne(cpf);
+                return UserDAO.ReadOneByCpf(cpf);
             }
             catch
             {
