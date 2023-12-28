@@ -16,3 +16,23 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar {
+    background-color: #11782D;
+    height: 10vh;
+    margin-bottom: 6vh;
+}
+
+.nav-logo {
+    margin-top: 8vh;
+    margin-left: 5vh;
+    height: 16vh;
+}
+
+.nav-btn {
+    background-color: #DBD406;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    color: #11782D;
+    font-weight: bolder;
+}
