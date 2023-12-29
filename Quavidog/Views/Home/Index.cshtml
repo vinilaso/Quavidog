@@ -1,9 +1,58 @@
-﻿@{
+﻿<link rel="stylesheet" href="~/css/Home.css" asp-append-version="true" />
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <span>@ViewBag.Message</span>
+<!-- Slideshow -->
+<div class="slideshow-container">
+
+    <!-- Slide 1 -->
+    <div class="slide">
+        <img id="banana-dog" class="banana-dog" src="~/img/bana-dog.gif" alt="Banana Dog" />
+        <img id="bush" class="bush" src="~/img/bush.svg" alt="Bush" />
+        <img class="cloud" src="~/img/cloud.svg" alt="Cloud" />
+
+        <i class="fa-solid fa-caret-left fa-2xl prev" onclick="plusSlides(-1)"></i>
+
+        <div class="vertical-align">
+            <img id="home-img" class="home-img" src="~/img/lugar-ideal.svg" alt="O lugar ideal para o conforto do seu melhor amigo." />
+        </div>
+
+        <span class="btn btn-home escola">Conheça a escola</span>
+
+        <i class="fa-solid fa-caret-right fa-2xl next" onclick="plusSlides(1)"></i>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <img id="element1" class="bottom-ellipse" src="~/img/bottom-ellipse.svg" alt="Bottom Ellipse" />
+        <img id="element2" class="top-ellipse" src="~/img/top-ellipse.svg" alt="Top Ellipse" />
+
+        <i class="fa-solid fa-caret-left fa-2xl prev" onclick="plusSlides(-1)"></i>
+
+        <div class="vertical-align">
+            <img id="home-img" class="home-img" src="~/img/em-casa.svg" alt="Aqui, seu pet se sente em casa" />
+        </div>
+
+        <span class="btn btn-home creche">Conheça a creche</span>
+
+        <i class="fa-solid fa-caret-right fa-2xl next" onclick="plusSlides(1)"></i>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <img class="rope" src="~/img/rope.svg" alt="Rope"/>
+        <img class="ball" src="~/img/ball.svg" alt="Ball"/>
+
+        <i class="fa-solid fa-caret-left fa-2xl prev" onclick="plusSlides(-1)"></i>
+
+        <div class="vertical-align">
+            <img id="home-img" class="home-img" src="~/img/amor-carinho.svg" alt="Amor, carinho e diversão não faltam para o seu pet." />
+        </div>
+
+        <span class="btn btn-home hotel">Conheça o hotel</span>
+
+        <i class="fa-solid fa-caret-right fa-2xl next" onclick="plusSlides(1)"></i>
+    </div>
+
 </div>

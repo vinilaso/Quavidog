@@ -37,6 +37,10 @@ body {
     font-weight: bolder;
 }
 
+    .nav-btn:hover {
+        background-color: #757206;
+    }
+
 .footer {
     background-color: #11782D;
 }

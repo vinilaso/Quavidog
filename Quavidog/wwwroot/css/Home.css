@@ -1,0 +1,142 @@
+﻿*{
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.home-img{
+    height: 50vh;
+    transition: linear .2s;
+}
+
+.home-img:hover{
+    height: 52vh;
+    cursor: pointer;
+    transition: linear .2s;
+}
+
+.vertical-align{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.bottom-ellipse{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 35vh;
+}
+
+.top-ellipse{
+    position:absolute;
+    top: 10vh;
+    right: 0;
+    height: 35vh;
+}
+
+.cloud{
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    height: 20vh;
+}
+
+.bush {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 30vh;
+}
+
+.rope{
+    position: absolute;
+    top: 10vh;
+    right: 0;
+    height: 30vh;
+}
+
+.ball{
+    position:absolute;
+    bottom: 5vh;
+    left: 0;
+    height: 25vh;
+}
+
+.next, .prev{
+    position: absolute;
+    top: 50%;
+}
+
+.next{
+    right: 50px;
+}
+
+.prev{
+    left: 50px;
+}
+
+.next:hover, .prev:hover{
+    color: dimgray;
+    transition: .2s linear;
+    cursor: pointer;
+}
+
+.slide{
+    display: none;
+    animation: fade 1.5s;
+}
+
+.btn-home {
+    position: absolute;
+    right: 15vw;
+    bottom: 15vh;
+    font-weight: bold;
+    color: black;
+}
+
+.banana-dog {
+    position: absolute;
+    bottom: 0;
+    height: 15vh;
+    transition: bottom linear 1s;
+}
+
+.bush:hover ~ .banana-dog{
+    bottom: 200px;
+    transition: bottom linear 1s;
+}
+
+.creche {
+    background-color: #11782D;
+}
+
+    .creche:hover {
+        background-color: #36B158;
+    }
+
+.escola {
+    background-color: #DBD406;
+}
+
+    .escola:hover {
+        background-color: #757206;
+    }
+
+.hotel {
+    background-color: #02BABA;
+}
+
+    .hotel:hover {
+        background-color: #035e5e;
+    }
+
+ @keyframes fade{
+     from{opacity: 0.4}
+     to{opacity: 1}
+ }
