@@ -1,0 +1,91 @@
+﻿body, html{
+    margin: 0;
+    padding: 0;
+}
+
+.parent{
+    width: 100vw;
+    height: 100vh;
+}
+
+.left-side{
+    width: 42.19%;
+    height: 100%;
+}
+
+.right-side {
+    width: 57.81%;
+    height: 100%;
+    background-color: #DBD406;
+}
+
+.bg-img{
+    height: 100%;
+    width: 100%;
+}
+
+.nav-logo{
+    position: absolute;
+    margin-top: 0 !important;
+}
+
+.login-container {
+    height: 82.87%;
+    width: 73.74%;
+    border-radius: 15px;
+    background-color: white;
+    padding-top: 5vh;
+}
+
+.login-title {
+    color: #11782D;
+    font-weight: bolder;
+    font-style: italic;
+    font-size: 32px;
+}
+
+.btn-back {
+    background-color: #11782D;
+    font-size: 22px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bolder;
+}
+
+.login-input {
+    margin-top: 5vh;
+    width: 80%;
+    border: none;
+    background-color: #D9D9D9;
+    height: 8.15vh;
+    border-radius: 20px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+    .login-input::placeholder {
+        color: #11782D;
+        opacity: 75%;
+        font-weight: bolder;
+        font-size: large;
+    }
+
+.option-link{
+    text-decoration: none !important;
+}
+
+.reset-password{
+    color: black;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.new-account{
+    font-weight: bolder;
+}
+
+.img-login{
+    width: 75%;
+    margin-bottom: 0;
+}

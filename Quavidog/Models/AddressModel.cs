@@ -15,6 +15,7 @@ namespace Quavidog.Models
         #endregion
 
         #region Constructors
+        public AddressModel() { }
         public AddressModel(IAddress address)
         {
             Id = address.Id;

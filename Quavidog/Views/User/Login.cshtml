@@ -1,0 +1,69 @@
+﻿@model UserModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+
+<div class="parent d-flex flex-row">
+
+    <!-- Left side -->
+    <div class="left-side">
+        <a asp-controller="Home" asp-action="Index">
+            <img class="nav-logo" src="~/img/logo.svg" />
+        </a>
+        <img class="bg-img" src="~/img/img4.jpg" />
+    </div>
+
+    <!-- Right side -->
+    <div class="right-side d-flex justify-content-center align-items-center">
+        <div class="login-container container text-center">
+
+            <!-- Btn back and title -->
+            <div class="row">
+                <div class="col">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-back">Voltar</a>
+                </div>
+                <div class="col">
+                    <span class="login-title">LOGIN</span>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <!-- Inputs -->
+
+            <form method="post" asp-controller="User" asp-action="Login">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" class="login-input" placeholder="CPF" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <input type="password" class="login-input" placeholder="Senha" />
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-2"></div>
+                    <div class="col text-start">
+                        <a class="option-link reset-password" asp-controller="User" asp-action="ResetPassword">Esqueceu sua senha?</a>
+                    </div>
+                    <div class="col text-end">
+                        <a class="option-link new-account" asp-controller="User" asp-action="Add">Criar nova conta</a>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col mt-3">
+                        <button type="submit" class="btn btn-back">Entrar</button>
+                    </div>
+                </div>
+            </form>
+            <img class="img-login" src="~/img/img-login.svg" alt="Login image"/>
+        </div>
+    </div>
+</div>
