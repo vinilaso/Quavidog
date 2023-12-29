@@ -24,8 +24,8 @@ body {
 }
 
 .nav-logo {
-    margin-top: 8vh;
-    margin-left: 5vh;
+    margin-top: 6vh;
+    margin-left: 1vw;
     height: 16vh;
 }
 
@@ -33,6 +33,38 @@ body {
     background-color: #DBD406;
     margin-left: 1vw;
     margin-right: 1vw;
-    color: #11782D;
+    color: #074016;
     font-weight: bolder;
+}
+
+.footer {
+    background-color: #11782D;
+}
+
+.footer-span {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: .2vh;
+    padding-top: .5vh;
+    color: #a8a30c;
+    font-weight: 600;
+    text-align: center;
+    line-height: 5vh;
+}
+
+.footer-icon {
+    font-size: 24px;
+    text-decoration: none !important;
+    color: #a8a30c !important;
+}
+
+.dropdown{
+    margin-left: auto;
+    margin-right: 5vw;
+}
+
+.drop-text {
+    font-size: 20px;
+    color: #DBD406 !important;
+    text-decoration: none !important;
 }
