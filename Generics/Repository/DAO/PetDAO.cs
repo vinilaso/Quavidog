@@ -57,7 +57,7 @@ namespace Generics.Repository.DAO
                         result = new Pet()
                         {
                             Id = (int)reader["ID"],
-                            Owner = UserDAO.ReadOneById((int)reader["OWNER"]),
+                            Owner = UserDAO.ReadOne((int)reader["OWNER"]),
                             Name = (string)reader["NAME"],
                             Size = (PetSize)reader["SIZE"],
                             Breed = (Breed)reader["BREED"],
@@ -79,7 +79,7 @@ namespace Generics.Repository.DAO
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "SELECT ID, OWNER, NAME, SIZE, BREED, MEDIA, MEDIA_NAME FROM PETS WHERE OWNER = @OWNER;";
 
-                var owner = UserDAO.ReadOneByCpf(cpf);
+                var owner = UserDAO.ReadOne(cpf);
                 cmd.Parameters.AddWithValue("@OWNER", owner.Id);
 
                 using(var reader = cmd.ExecuteReader()) 
@@ -89,7 +89,7 @@ namespace Generics.Repository.DAO
                         result.Add(new Pet()
                         {
                             Id = (int)reader["ID"],
-                            Owner = UserDAO.ReadOneById((int)reader["OWNER"]),
+                            Owner = UserDAO.ReadOne((int)reader["OWNER"]),
                             Name = (string)reader["NAME"],
                             Size = (PetSize)reader["SIZE"],
                             Breed = (Breed)reader["BREED"],
@@ -118,7 +118,7 @@ namespace Generics.Repository.DAO
                         result.Add(new Pet()
                         {
                             Id = (int)reader["ID"],
-                            Owner = UserDAO.ReadOneById((int)reader["OWNER"]),
+                            Owner = UserDAO.ReadOne((int)reader["OWNER"]),
                             Name = (string)reader["NAME"],
                             Size = (PetSize)reader["SIZE"],
                             Breed = (Breed)reader["BREED"],

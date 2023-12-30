@@ -43,7 +43,7 @@ namespace Generics.Repository.DAO
             }
         }
 
-        public static IUser ReadOneByCpf(string cpf)
+        public static IUser ReadOne(string cpf)
         {
             var result = new User();
             using(var conn = new SqlConnection(DBConnection.Connect()))
@@ -78,7 +78,7 @@ namespace Generics.Repository.DAO
             return result;
         }
 
-        public static IUser ReadOneById(int id)
+        public static IUser ReadOne(int id)
         {
             var result = new User();
             using(var conn = new SqlConnection(DBConnection.Connect()))
@@ -106,6 +106,34 @@ namespace Generics.Repository.DAO
                             AccessType = (AccessType)reader["ACCESS_TYPE"],
                             Media = (reader["MEDIA"] != DBNull.Value) ? (byte[])reader["MEDIA"] : null,
                             MediaName = (reader["MEDIA_NAME"] != DBNull.Value) ? (string)reader["MEDIA_NAME"] : null
+                        };
+                    }
+                }
+            }
+            return result;
+        }
+
+        public static IUser ReadOne(string cpf, string password) 
+        {
+            var result = new User();
+            using(var conn = new SqlConnection(DBConnection.Connect()))
+            {
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT ID, NAME, ACCESS_TYPE FROM USERS WHERE CPF = @CPF AND PASSWORD = @PASSWORD;";
+
+                cmd.Parameters.AddWithValue("@CPF", cpf);
+                cmd.Parameters.AddWithValue("@PASSWORD", password);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        result = new User()
+                        {
+                            Id = (int)reader["ID"],
+                            Name = (string)reader["NAME"],
+                            AccessType = (AccessType)reader["ACCESS_TYPE"]
                         };
                     }
                 }

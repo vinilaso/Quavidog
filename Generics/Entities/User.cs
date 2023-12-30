@@ -50,7 +50,19 @@ namespace Generics.Entities
         {
             try
             {
-                return UserDAO.ReadOneByCpf(cpf);
+                return UserDAO.ReadOne(cpf);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static IUser ReadOne(string cpf, string password) 
+        {
+            try
+            {
+                return UserDAO.ReadOne(cpf, password);
             }
             catch
             {

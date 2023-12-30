@@ -1,7 +1,48 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
+    AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Administrator", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireAssertion(context =>
+        {
+            var user = context.User;
+            return user.Claims.Any(property => property.Type == "AccessLevel" && property.Value == "Administrator");
+        });
+    });
+    options.AddPolicy("Employee", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireAssertion(context =>
+        {
+            var user = context.User;
+            return user.Claims.Any(property => property.Type == "AccessLevel" && property.Value == "Employee");
+        });
+    });
+    options.AddPolicy("Client", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireAssertion(context =>
+        {
+            var user = context.User;
+            return user.Claims.Any(property => property.Type == "AccessLevel" && property.Value == "Client");
+        });
+    });
+});
 
 var app = builder.Build();
 

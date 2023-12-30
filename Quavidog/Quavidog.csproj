@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Generics\Generics.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
 </Project>
