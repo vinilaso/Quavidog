@@ -1,8 +1,14 @@
 ﻿@model UserModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Try Verification";
     Layout = "~/Views/Shared/_ClearLayout.cshtml";
 }
+
+<script type="text/javascript">
+    window.onload = function(){
+        alert("CPF ou senha incorretos!")
+    }
+</script>
 
 <div class="parent d-flex flex-row">
 
@@ -35,14 +41,14 @@
             <form method="post" asp-controller="Login" asp-action="TryVerification">
                 <div class="row">
                     <div class="col-12">
-                        <input type="text" class="login-input" placeholder="CPF" asp-for="Cpf"/>
+                        <input onchange="this.className='login-input';" type="text" class="login-input try-verficiation" placeholder="CPF" asp-for="Cpf" value="@Model.Cpf" />
                     </div>
                 </div>
 
 
                 <div class="row">
                     <div class="col-12">
-                        <input type="password" class="login-input" placeholder="Senha" asp-for="Password"/>
+                        <input onchange="this.className='login-input';" id="password" type="password" class="login-input try-verficiation" placeholder="Senha" asp-for="Password" value="@Model.Password" />
                     </div>
                 </div>
 
@@ -63,7 +69,8 @@
                     </div>
                 </div>
             </form>
-            <img class="img-login" src="~/img/img-login.svg" alt="Login image"/>
+            <img class="img-login" src="~/img/img-login.svg" alt="Login image" />
         </div>
     </div>
 </div>
+

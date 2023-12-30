@@ -36,4 +36,4 @@ bush.addEventListener('mouseenter', () => {
 
 bush.addEventListener('mouseleave', () => {
     bananaDog.style.bottom = '0';
-})
+});

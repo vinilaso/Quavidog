@@ -68,7 +68,6 @@ body {
 }
 
 .drop-text {
-    font-size: 20px;
     color: #DBD406 !important;
     text-decoration: none !important;
 }
@@ -77,4 +76,9 @@ body {
     font-weight: bold;
     color: #DBD406 !important;
     text-decoration: none !important;
+}
+
+.logout{
+    font-size: initial;
+    cursor: pointer;
 }

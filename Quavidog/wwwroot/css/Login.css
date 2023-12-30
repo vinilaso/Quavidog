@@ -89,3 +89,11 @@
     width: 75%;
     margin-bottom: 0;
 }
+
+.try-verficiation{
+    color: red;
+}
+
+.try-verficiation:focus{
+    color: black;
+}

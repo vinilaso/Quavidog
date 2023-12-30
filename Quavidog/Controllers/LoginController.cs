@@ -18,10 +18,10 @@ namespace Quavidog.Controllers
         {
             var user = Generics.Entities.User.ReadOne(model.Cpf, model.Password);
 
-            if (user == null)
+            if (user.Id == default(int))
             {
                 ModelState.AddModelError(string.Empty, "CPF ou senha incorretos.");
-                return View(user);
+                return View(model);
             }
 
             var claims = new List<Claim>
@@ -41,6 +41,13 @@ namespace Quavidog.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
         }
     }
