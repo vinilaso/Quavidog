@@ -18,6 +18,7 @@ namespace Generics.Entities
         public string Neighborhood { get; set; } = string.Empty;
         public string Street { get; set; } = string.Empty;
         public string Number { get; set; } = string.Empty;
+        public string? Details { get; set; }
 
         #endregion
 
@@ -29,16 +30,15 @@ namespace Generics.Entities
 
         #region Methods
 
-        public static bool Add(IAddress address)
+        public static int Add(IAddress address)
         {
             try 
             {
-                AddressDAO.Add(address);
-                return true;
+                return AddressDAO.Add(address);
             }
-            catch (Exception)
+            catch
             {
-                return false;
+                return default(int);
             }
         }
 

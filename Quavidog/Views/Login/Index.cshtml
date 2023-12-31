@@ -1,4 +1,5 @@
-﻿@model UserModel
+﻿<link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+@model UserModel
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_ClearLayout.cshtml";
@@ -9,7 +10,7 @@
     <!-- Left side -->
     <div class="left-side">
         <a asp-controller="Home" asp-action="Index">
-            <img class="nav-logo" src="~/img/logo.svg" />
+            <img class="nav-logo" src="~/img/logo.svg" alt="Logo"/>
         </a>
         <img class="bg-img" src="~/img/img4.jpg" />
     </div>

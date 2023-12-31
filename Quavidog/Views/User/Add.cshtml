@@ -1,0 +1,188 @@
+﻿@model UserAddressModel
+@{
+    ViewData["Title"] = "Cadastro";
+    Layout = "~/Views/Shared/_ClearLayout.cshtml";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="~/css/AddUser.css" asp-append-version="true" />
+
+<!-- Background -->
+<div class="background d-flex flex-row">
+    <div class="right-side"></div>
+    <div class="left-side"></div>
+</div>
+
+<!-- Form container -->
+<div class="parent">
+    <div class="add-container container">
+
+        <!-- Title -->
+        <div class="row">
+            <div class="text-center col-12">
+                <span class="title">CADASTRO</span>
+            </div>
+        </div>
+
+        <!-- Tab links -->
+        <div class="row">
+            <div class="col-2"></div>
+
+            <div id="address-tab" class="col-3 tablink">
+                <span class="tab">Endereço</span>
+            </div>
+
+            <div class="col-2">
+                <hr />
+            </div>
+
+            <div id="user-tab" class="col-3 tablink">
+                <span class="tab">Usuário</span>
+            </div>
+
+            <div class="col-2"></div>
+        </div>
+
+        <!-- Form & tab content -->
+        <form method="POST" asp-controller="User" asp-action="Add" enctype="multipart/form-data">
+
+            <!-- Address tab -->
+            <div id="Address" class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 d-flex flex-column">
+                            <label class="label" for="CEP">CEP</label>
+                            <input id="cep" type="text" asp-for="AddressModel.Cep" required minlength="8" maxlength="8" />
+                        </div>
+                        <div class="col-9 d-flex flex-column">
+                            <label class="label" for="City">Cidade</label>
+                            <input id="city" type="text" asp-for="AddressModel.City" readonly required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 d-flex flex-column">
+                            <label class="label" for="Street">Logradouro</label>
+                            <input id="street" type="text" asp-for="AddressModel.Street" readonly required />
+                        </div>
+                        <div class="col-4 d-flex flex-column">
+                            <label class="label" for="Number">Número</label>
+                            <input id="number" type="text" asp-for="AddressModel.Number" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 d-flex flex-column">
+                            <label class="label" for="Neighborhood">Bairro</label>
+                            <input id="neighborhood" type="text" asp-for="AddressModel.Neighborhood" readonly required />
+                        </div>
+                        <div class="col-6 d-flex flex-column">
+                            <label class="label" for="Details">Complemento</label>
+                            <input type="text" asp-for="AddressModel.Details" placeholder="Opcional" />
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-end">
+                    <a asp-controller="Home" asp-action="Index" type="button" class="btn btn-cancel">Cancelar</a>
+                    <button type="button" class="btn btn-continue" onclick="openForm(event, 'User', 'user-tab')">Continuar</button>
+                </div>
+            </div>
+
+            <!-- User tab -->
+            <div id="User" class="content">
+                <div class="container align-items-center">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 d-flex flex-column">
+                                        <label class="label" for="Name">Nome</label>
+                                        <input type="text" asp-for="UserModel.Name" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 d-flex flex-column">
+                                        <label class="label" for="Cpf">CPF</label>
+                                        <input type="text" asp-for="UserModel.Cpf" />
+                                    </div>
+                                    <div class="col-6 d-flex flex-column">
+                                        <label class="label" for="Password">Senha</label>
+                                        <input type="password" asp-for="UserModel.Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 d-flex flex-column">
+                                        <label class="label" for="Email">Email</label>
+                                        <input type="email" asp-for="UserModel.Email" />
+                                    </div>
+                                    <div class="col-6 d-flex flex-column">
+                                        <label class="label" for="Phone">Telefone</label>
+                                        <input type="text" asp-for="UserModel.Phone" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-4 d-flex flex-column">
+                            <label class="label" for="image">Foto de perfil</label>
+                            <input name="image" type="file" id="uploadFoto" style="display: none;" accept="image/*" onchange="previewFoto()" />
+                            <div class="form-group">
+                                <label for="uploadFoto" style="cursor: pointer;">
+                                    <div id="fotoPreview" class="border bg-light" style="width: fit-content; height: fit-content; max-height: 21rem; max-width: 25rem;">
+                                        <img id="fotoDisplay" style="width: fit-content; height: fit-content; max-height: 21rem; max-width: 25rem;" src="/img/upload-picture.png" alt="Foto de perfil" class="img-fluid">
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-end">
+                            <button type="button" class="btn btn-cancel" onclick="openForm(event, 'Address', 'address-tab')">Voltar</button>
+                            <button type="submit" class="btn btn-continue">Cadastrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Logo -->
+<a asp-controller="Home" asp-action="Index">
+    <img class="nav-logo" src="~/img/logo.svg" alt="Logo" />
+</a>
+
+<script type="text/javascript">
+    // TABS
+    document.getElementById("Address").style.display = "block";
+    document.getElementById("address-tab").className += " active";
+    function openForm(evt, formName, tabName) {
+
+        var i, tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(formName).style.display = "block";
+        document.getElementById(tabName).className += " active";
+    }
+
+    // CEP
+    $("#cep").blur(function () {
+        var cep = this.value.replace(/[^0-9]/, "");
+
+        if (cep.length != 8) {
+            return false;
+        }
+        var url = "https://viacep.com.br/ws/" + cep + "/json/";
+        $.getJSON(url, function (dadosRetorno) {
+            try {
+                $("#street").val(dadosRetorno.logradouro);
+                $("#neighborhood").val(dadosRetorno.bairro);
+                $("#city").val(dadosRetorno.localidade);
+            } catch (ex) { }
+        });
+    });
+</script>

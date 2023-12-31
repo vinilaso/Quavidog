@@ -12,14 +12,19 @@ namespace Generics.Repository.DAO
 {
     public class AddressDAO
     {
-        public static void Add(IAddress address)
+        public static int Add(IAddress address)
         {
             using (var conn = new SqlConnection(DBConnection.Connect()))
             {
                 conn.Open();
                 var cmd = conn.CreateCommand();
-                cmd.CommandText = "INSERT INTO ADDRESSES (CEP, STREET, NUMBER, NEIGHBORHOOD, CITY) " +
-                    "VALUES (@CEP, @STREET, @NUMBER, @NEIGHBORHOOD, @CITY);";
+
+                var details = (address.Details != null) ? ", DETAILS" : string.Empty;
+                var detailsValue = (address.Details != null) ? ", @DETAILS" : string.Empty;
+
+                cmd.CommandText = $"INSERT INTO ADDRESSES (CEP, STREET, NUMBER, NEIGHBORHOOD, CITY{details}) " +
+                    "OUTPUT INSERTED.ID " +
+                    $"VALUES (@CEP, @STREET, @NUMBER, @NEIGHBORHOOD, @CITY{detailsValue});";
 
                 cmd.Parameters.AddWithValue("@CEP", address.Cep);
                 cmd.Parameters.AddWithValue("@STREET", address.Street);
@@ -27,8 +32,20 @@ namespace Generics.Repository.DAO
                 cmd.Parameters.AddWithValue("@NEIGHBORHOOD", address.Neighborhood);
                 cmd.Parameters.AddWithValue("@CITY", address.City);
 
-                cmd.ExecuteNonQuery();
+                if(address.Details != null)
+                {
+                    cmd.Parameters.AddWithValue("@DETAILS", address.Details);
+                }
+
+                using(var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return reader.GetInt32(0);
+                    }
+                }
             }
+            return default(int);
         }
 
         public static IAddress ReadOne(int id)
